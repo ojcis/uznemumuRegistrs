@@ -7,7 +7,7 @@ use App\CompaniesRegister;
 $companies=new CompaniesRegister('register.csv',';');
 while (true) {
     while (true){
-        echo "[1] Apskatīt uzņēmumu reģistru.".PHP_EOL;
+        echo "[1] Apskatīt pēdējos 30 ierakstus uzņēmuma reģistrā.".PHP_EOL;
         echo "[2] Meklēt uzņēmuma reģistrācijas numuru pēc uzņēmuma nosaukuma.".PHP_EOL;
         echo "[3] Meklēt uzņēmuma nosaukumu pēc reģistrācijas numura.".PHP_EOL;
         echo "[4] Iziet no aplikācijas.".PHP_EOL;
