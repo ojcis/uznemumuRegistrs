@@ -14,7 +14,7 @@ while (true) {
         $choice = readline('Izvēlies numuru darbībai ko vēlies veikt: ');
         switch ($choice){
             case 1:
-                echo PHP_EOL."UZŅĒMUMU REĢISTRS:".PHP_EOL;
+                echo PHP_EOL."UZŅĒMUMU REĢISTRS PĒDĒJIE 30 IERAKSTI:".PHP_EOL;
                 echo $companies->getCompaniesRegister();
                 break;
             case 2:

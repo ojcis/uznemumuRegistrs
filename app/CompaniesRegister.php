@@ -14,12 +14,7 @@ class CompaniesRegister
         $csv = Reader::createFromPath($csvFile);
         $csv->setDelimiter($delimiter);
         $csv->setHeaderOffset(0);
-
-        $stmt = Statement::create()
-            ->offset(count($csv)-30);
-        $records = $stmt->process($csv);
-
-        foreach ($records as $record) {
+        foreach ($csv as $record) {
             $this->companies[]= new Company($record['name'],$record['regcode']);
         }
     }
@@ -32,10 +27,11 @@ class CompaniesRegister
     public function getCompaniesRegister(): string
     {
         $companiesRegister='NOSAUKUMS'.str_repeat(' ',41).'- REĢISTRĀCIJAS NUMURS'.PHP_EOL;
-        foreach ($this->companies as $company){
-            $count=strlen($company->getName());
+        for ($i=count($this->companies)-30; $i<count($this->companies); $i++){
+            $selectedCompany=$this->companies[$i];
+            $count=strlen($selectedCompany->getName());
             $space=str_repeat(' ',50-$count).'- ';
-            $companiesRegister=$companiesRegister.$company->getName().$space.$company->getRegistrationCode().PHP_EOL;
+            $companiesRegister=$companiesRegister.$selectedCompany->getName().$space.$selectedCompany->getRegistrationCode().PHP_EOL;
         }
         return $companiesRegister;
     }
